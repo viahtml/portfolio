@@ -1,0 +1,413 @@
+/********
+
+DESIGN, LAYOUT, AND CODE
+BY KEREN GUEVARA
+
+ICON FONT
+BY FONTAWESOME
+https://fontawesome.com/
+
+OPEN SOURCE DOODLE
+BY OPENDOODLES
+https://www.opendoodles.com
+
+**********/
+
+
+
+:root {
+
+  /** FONTS **/
+  --sans: 'Nunito', sans-serif;
+  --display: 'Shrikhand', cursive;
+
+  /** COLORS **/
+  --clear: rgba(255, 255, 255, 0);
+  --white: 255, 252, 252;
+  --white-hex: #fffcfc;
+  --white2: 247, 247, 247;
+  --white2-hex: #f7f7f7;
+  --white3: 240, 240, 240;
+  --white3-hex: #f0f0f0;
+  --gray: 221, 221, 221;
+  --gray-hex: #ddd;
+  --black: 40, 42, 42;
+  --black-hex: #282A2A;
+
+  /** ACCENTS **/
+  --accent: 239, 98, 159;
+  --accent-hex: #EF629F;
+  --accent-hue: 334;
+  --secondary:238, 205, 163;
+  --secondary-hex:#eecda3;
+  --secondary-hue: 34;
+
+  /** PERCENTAGES **/
+  --pastelpercent: -25%;
+  --normalpercent: 20%;
+  --lightpercent: 2%;
+  --saturation: 70%;
+  --fontsaturation: 100%;
+  --lightness: 88%;
+  --darken: 0%;
+  --fontdarken:-15%;
+
+  /** GRADIENTS **/
+  --pastelgradient: hsl(var(--accent-hue), calc(var(--saturation) + var(--pastelpercent)), calc(var(--lightness) + var(--lightpercent) + var(--darken))),
+   hsl(var(--secondary-hue), calc(var(--saturation) + var(--pastelpercent)), calc(var(--lightness) + var(--lightpercent) + var(--darken)));
+  --fontgradient: hsl(var(--accent-hue), calc(var(--fontsaturation) + var(--normalpercent)), calc(var(--lightness) + var(--lightpercent) + var(--fontdarken))),
+    hsl(var(--secondary-hue), calc(var(--fontsaturation) + var(--normalpercent)), calc(var(--lightness) + var(--lightpercent) + var(--fontdarken)));
+
+  /** OTHER **/
+  --blendmode: darken;
+  --spacing: 10vw;
+
+  /* FONT AWESOME */
+
+  --fa-primary-color: var(--accent-hex);
+  --fa-secondary-color: rgba(var(--accent),0.4);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    transition:0.3s ease;
+}
+
+body {
+  font:400 0.9rem/160% var(--sans);
+  background: var(--white-hex);  /* fallback for old browsers */
+  background-image: linear-gradient(to top right, var(--pastelgradient)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-blend-mode: var(--blendmode);
+  background-repeat: no-repeat;
+  background-size:cover;
+  height:100%;
+}
+
+a {
+    color:var(--accent-hex)!important;
+    text-decoration:none!important;
+}
+
+a:hover {
+    color:var(--black-hex)!important;
+    cursor:crosshair;
+}
+
+/** SCROLLBAR **/
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background:var(--clear);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-hex);
+  border:1px solid var(--gray-hex);
+  border-radius:20px;
+}
+
+  /** SELECTION **/
+
+::-moz-selection { background: rgba(var(--accent),0.3); color:var(--white-hex); }
+::selection { background: rgba(var(--accent),0.3); color:var(--white-hex); }
+
+
+/** BUTTONS **/
+
+#top {
+    position:fixed;
+    right:30px;
+    bottom:70px;
+    font-size:35px;
+    border:0;
+    background:none;
+    color:var(--accent-hex);
+    z-index:9999;
+}
+
+#bottom {
+    position:fixed;
+    right:30px;
+    bottom:20px;
+    font-size:35px;
+    border:0;
+    background:none;
+    color:var(--accent-hex);
+    z-index:9999;
+}
+
+#wrapper {
+    position:relative;
+    display: grid;
+    grid-template-rows:auto auto auto;
+    grid-template-areas:
+      "navigation"
+      "main"
+      "footer";
+    width: min(calc(100vw - (var(--spacing))), 1500px);
+    margin: 30px auto 0px;
+    background-color: rgba(var(--white),0.5);
+    border:1px solid rgba(var(--white),0.5);
+    border-radius:5px;
+    overflow:hidden;
+}
+
+navigation {
+  position:relative;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content:space-between;
+  align-items: flex-start;
+  padding:20px;
+}
+
+navigation navlinks {
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: flex-end;
+  align-items: center;
+  width:75%;
+}
+
+navigation a {
+  font:800 1.2rem var(--sans);
+}
+
+navigation navlinks a {
+  margin:0 10px;
+  font:inherit;
+}
+
+navigation navlinks a.contact {
+  background:var(--secondary-hex);
+  color:var(--white-hex)!important;
+  padding:10px 20px;
+  border-radius:5px;
+}
+
+navigation navlinks a.contact:hover {
+  background:var(--white-hex);
+  color:var(--secondary-hex)!important;
+}
+
+wrapper-main {
+  position:relative;
+  display:block;
+  width:100%;
+  padding:30px;
+}
+
+wrapper-main h2 {
+  display:inline-block;
+  font:500 italic 3.3rem var(--display);
+  margin-left:80px;
+  margin-bottom: 0;
+  background-image: linear-gradient(to right, var(--fontgradient));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(var(--white), 0);
+  text-transform:uppercase;
+  border-bottom:5px solid var(--white-hex);
+}
+
+wrapper-main main-header {
+  display:grid;
+  grid-template-areas:
+    "text image"
+    "about image";
+  grid-template-columns: 30% 70%;
+}
+
+wrapper-main main-header img {
+  grid-area:image;
+  width:100%;
+  object-fit:cover;
+}
+
+wrapper-main main-header .main-header-text {
+  grid-area:text;
+  position:relative;
+  display:flex;
+  flex-flow:column;
+  justify-content: center;
+  margin:40px -70px 40px 70px;
+  color:var(--black-hex);
+  font:200 1.5rem/100% var(--sans);
+}
+
+wrapper-main main-header .main-header-text h1 {
+  margin:0 auto;
+  font:900 4rem/80% var(--sans);
+  text-transform:lowercase;
+}
+
+wrapper-main main-header svg {
+  grid-area:image;
+  width:100%;
+  height:100%;
+}
+
+wrapper-main main-quick {
+  grid-area:about;
+  margin:-30px -70px 0 70px;
+  display:flex;
+  flex-flow:column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+wrapper-main main-quick item {
+  display:flex;
+  flex-flow:row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom:10px;
+  font:200 0.7rem var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+}
+
+wrapper-main main-quick i {
+  font-size:28px;
+  margin-right:10px;
+}
+
+wrapper-main education {
+  position:relative;
+  display:grid;
+  grid-template-areas:
+    "college college-accomplishments"
+    "hs hs-accomplishments";
+  grid-template-columns:1fr 1fr;
+  grid-gap:10px;
+  padding:40px 80px;
+}
+
+wrapper-main education school {
+  display:flex;
+  flex-flow:column;
+  border-right:5px solid rgba(var(--white),0.5);
+}
+
+wrapper-main education school.college {
+  grid-area: college;
+}
+
+wrapper-main education school.hs {
+  grid-area: hs;
+}
+
+wrapper-main education school b {
+  font:800 1rem var(--sans);
+  text-transform:uppercase;
+}
+
+wrapper-main education school small {
+  font:200 0.7rem var(--sans);
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+wrapper-main education accomplishments.college-accomplishments {
+  grid-area: college-accomplishments;
+}
+
+wrapper-main education accomplishments.hs-accomplishments {
+  grid-area: hs-accomplishments;
+}
+
+wrapper-main education accomplishments item {
+  display:block;
+  margin:0 0 10px;
+  padding:20px;
+  background:rgba(var(--accent),0.1);
+  border-radius:5px;
+}
+
+wrapper-main education accomplishments item:last-child {
+  margin-bottom:0;
+}
+
+wrapper-main education accomplishments b::before {
+  content: '\f058';
+  font-family: 'Font Awesome 5 Pro';
+  font-weight:900;
+  font-size:17px;
+  color:var(--accent-hex);
+  margin-right:10px;
+}
+
+wrapper-main education accomplishments item small {
+  display:block;
+  font:200 0.7rem var(--sans);
+  text-transform:uppercase;
+  letter-spacing:1px
+}
+
+wrapper-main education accomplishments item blockquote x, wrapper-main experience experience-item blockquote x {
+  display:block;
+}
+
+wrapper-main education accomplishments item blockquote i::before, wrapper-main experience experience-item blockquote x::before, wrapper-main experience experience-item x::before {
+  content: '— ';
+}
+
+wrapper-main experience {
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-gap:10px;
+  padding:80px;
+}
+
+wrapper-main experience experience-item {
+  padding:20px;
+  background:rgba(var(--accent),0.1);
+  border-radius:5px;
+}
+
+wrapper-main experience experience-item experience-item-label {
+  display:flex;
+  flex-flow:column;
+}
+
+wrapper-main experience experience-item experience-item-label small {
+  display:block;
+  font:200 0.7rem var(--sans);
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+wrapper-main competencies {
+  position:relative;
+  display:grid;
+  grid-template-columns:20% 80%;
+  grid-gap:10px;
+  align-items: center;
+  padding:80px;
+}
+
+wrapper-main competencies x {
+  font:600 0.9rem var(--sans);
+  text-transform:uppercase;
+  letter-spacing:1.25px;
+  text-align:right;
+}
+
+wrapper-main competencies trait {
+  background:var(--white-hex);
+  width:100%;
+  height:5px;
+  border-radius:20px;
+}
+
+wrapper-main competencies traitbar {
+  position:relative;
+  display:block;
+  background:linear-gradient(to right, var(--fontgradient));
+  height:5px;
+  border-radius:20px;
+  z-index:2;
+}
